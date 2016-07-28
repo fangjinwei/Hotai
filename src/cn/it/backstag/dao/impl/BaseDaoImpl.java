@@ -1,0 +1,106 @@
+package cn.it.backstag.dao.impl;
+
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+import org.hibernate.SessionFactory;
+
+import cn.it.backstag.dao.BaseDao;
+
+/*
+ * 抽象的dao实现，专门用来继承
+ */
+@SuppressWarnings("unchecked")
+public abstract class BaseDaoImpl<T> implements BaseDao<T> {
+
+	@Resource(name="sessionFactory")
+	private SessionFactory sf;
+
+	private Class<T> clazz;
+
+	public BaseDaoImpl() { 
+		// 得到泛型话超类
+		ParameterizedType type = (ParameterizedType) this.getClass()
+				.getGenericSuperclass();
+		clazz = (Class<T>) type.getActualTypeArguments()[0];
+	}
+
+	public T saveEntity(T t) {
+		sf.getCurrentSession().save(t);
+		return t;
+	}
+
+	public void saveOrUpdateEntity(T t) {
+		sf.getCurrentSession().saveOrUpdate(t);
+	}
+
+	public void updateEntity(T t) {
+		sf.getCurrentSession().update(t);
+	}
+
+	public void deleteEntity(T t) {
+		sf.getCurrentSession().delete(t);
+	}
+
+	/**
+	 * 按照HQL语句进行批量更新
+	 */
+	public void batchEntityByHQL(String hql, Object... objects) {
+		Query q = sf.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < objects.length; i++) {
+			q.setParameter(i, objects[i]);
+		}
+		q.executeUpdate();
+	}
+
+	public T loadEntity(Integer id) {
+		return (T) sf.getCurrentSession().load(clazz, id);
+	}
+
+	public T getEntity(Integer id) {
+		return (T) sf.getCurrentSession().get(clazz, id);
+	}
+
+	public List<T> findEntityByHQL(String hql, Object... objects) {
+		Query q = sf.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < objects.length; i++) {
+			q.setParameter(i, objects[i]);
+		}
+		return q.list();
+	}
+
+	// 分页显现
+	public List<T> findEntityByHQLS(String hql, int page, int size,
+			Object... objects) {
+		Query q = sf.getCurrentSession().createQuery(hql);
+		for (int i = 0; i < objects.length; i++) {
+			q.setParameter(i, objects[i]);
+
+		}
+		q.setFirstResult((page - 1) * size);
+		q.setMaxResults(size);
+		return q.list();
+	}
+	// 获得记录数
+		public Long getCount(String hql, Object... objects) {
+			Query q = sf.getCurrentSession().createQuery(hql);
+			for (int i = 0; i < objects.length; i++) {
+				q.setParameter(i, objects[i]);
+			}
+			return (Long) q.uniqueResult();
+		}
+		
+		
+		//原始sql
+		public int batchBySql(String sql, Object... objects){
+			SQLQuery createSQLQuery = sf.getCurrentSession().createSQLQuery(sql);
+			for (int i = 0; i <objects.length ; i++) {
+				createSQLQuery.setParameter(i, objects[i]);
+			}
+			return createSQLQuery.executeUpdate();
+		}
+}

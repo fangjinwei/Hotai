@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body,h1,h2,h3,h4,ul,li,ol,dl,dt,dd,form,p,input,textarea{margin:0;padding:0;}
+ul,dl,ol{list-style:none;}
+html, body {
+    height:100%;
+} 
+body{
+	font-family:"微软雅黑","华文细黑",Arial, Helvetica, sans-serif;
+	background-color:#f8f8f8;
+	color:#fff;
+	width:100%;
+	
+}
+img{border:none; width:100%;}
+h1,h2,h3{font-weight:normal;}
+.clear{clear:both}
+a{text-decoration:none;}
+
+.page-app {
+    max-width:640px;
+    min-width:320px;
+    margin:0 auto;
+	height:auto;
+    display:none\9;
+	font-size:0px;
+	width:100%;
+}
+
+.toutu{ width:100%; height:120px; background-image:url(../images/listtou.jpg); background-color:#toutu; text-align:center;}
+.icon{ width:65px; height:65px; float:left; margin-top:15%;}
+.ttwenzi{ float:left; margin-top:15%;}
+.ttwz{ font-family:"微软雅黑"; font-size:30px; color:#FFF; font-weight:bold; }
+.ttnumber{ font-family:"微软雅黑"; font-size:18px; color:#FF0; }
+
+
+.mian{width:100%; height: auto; background-color:#FFF; border:0px; margin:0; padding:0px; }
+.contain{ width:90%; height: auto; background-color:#FFF; padding-top:30px;}
+.list{ width:100%; height:150px; background-color:#f0f0f0; margin-top:10px; border-top:#bababa 1px solid; line-height:40px;}
+.pic{ width:50%; height:100%; float:left;}
+.rcgyyh{ width:130px; height:130px; background-image:url(../images/pic/rcgyyh.jpg); margin-top:10px; }
+.wz{ width:50%; height:100%; float:left;}
+.xiangmu{ font-family:"微软雅黑"; font-size:18px; color:#ec3f40; font-weight:bold; text-align:left;}
+.xinxi{ font-family:"微软雅黑"; font-size:15px; color:#818181; text-align:left; float:left; width:90%; line-height:20px;}
+
+.anniu1{width:100%; height:40px; background-color:#d13435;}
+.anniu2{ float:right; width:50%; height:40px; background-color:#7b7b7b;}
+
+
+
+
+.STYLE1{ font-family:"微软雅黑"; font-size:20px; color:#fff; line-height:30px; margin:0 auto; line-height:40px;}
+.STYLE2{ font-family:"微软雅黑"; font-size:18px; color:#FFF; line-height:50px; margin:0 auto; text-align:center; z-index:11;}
+
+.dibu{ background-color: #000; filter:Alpha(opacity=50); opacity: 0.5; width:100%; height:70px; position:fixed; bottom:0; left:0; z-index:1;}
+.anniu3{ width:70%; height:50px; background-color:#ec3f40; z-index:10; position:fixed;  bottom:10px; left:50px; }
+
+
+a:link{text-decoration:none ; color:#fa213d ;}
+a:visited {text-decoration:none ; color:#fa213d ;}
+a:hover {text-decoration:none ; color:#fa213d ;}
+a:active {text-decoration:none ; color:#fa213d ;}
+
+
+
+
+
+

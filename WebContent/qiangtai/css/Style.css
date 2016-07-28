@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body,h1,h2,h3,h4,ul,li,ol,dl,dt,dd,form,p,input,textarea{margin:0;padding:0;}
+ul,dl,ol{list-style:none;}
+html, body {
+    height:100%;
+} 
+body{
+	font-family:"微软雅黑","华文细黑",Arial, Helvetica, sans-serif;
+	background-color:#f8f8f8;
+	color:#fff;
+	width:100%;
+	
+}
+img{border:none; width:100%;}
+h1,h2,h3{font-weight:normal;}
+.clear{clear:both}
+a{text-decoration:none;}
+
+.page-app {
+    max-width:640px;
+    min-width:320px;
+    margin:0 auto;
+	height:auto;
+    display:none\9;
+	font-size:0px;
+	width:100%;
+}
+
+.mian{width:100%; height:177px; background-color:#FFF; border:0px; margin:0; padding:0px; }
+.contain{ width:95%; height: auto; background-color:#FFF;}
+.list{ width:100%; height:45px; background-color:#FFF; float:left; margin-top:15px; border-bottom:#d3d3d3 1px solid; line-height:50px;}
+.icon1{ width:30px; height:30px; float:left;}
+.icon2{ width:100px; height:60px; float:left; margin-left:10px; line-height:45px;}
+.icon3{ float: right; width:80px; font-family:"微软雅黑"; font-size:14px; color:#2870a3; line-height:40px; border-left:#d3d3d3 1px solid;}
+
+.button{ width:100%; height:20%; line-height:50px; margin-top:20px;}
+.button1{ width:90%; height:50px; background-color:#ec3f40; 
+	/* -moz-border-radius: 35px;      Gecko browsers */
+    /* -webkit-border-radius: 35px;   Webkit browsers */
+    /* border-radius:35px;            W3C syntax */
+	border:0;
+	-webkit-appearance:none;}
+.button2{ width:90%; height:30px; background-color:#ec3f40; color:#FFF;
+	/* -moz-border-radius: 35px;      Gecko browsers */
+    /* -webkit-border-radius: 35px;   Webkit browsers */
+    /* border-radius:35px;            W3C syntax */
+	border:0;
+	-webkit-appearance:none;}
+.STYLE1{ font-family:"微软雅黑"; font-size:20px; color:#FFF; line-height:50px; margin:0 auto;}
+#ssss{ font-family:"微软雅黑"; font-size:20px; color:#FFF; line-height:50px; margin:0 auto;}
+.STYLE2{ font-family:"微软雅黑"; font-size:15px; color:#949494; line-height:50px; margin:0 auto;}
+.STYLE3{ font-family:"微软雅黑"; font-size:15px; color:#fa213d; line-height:50px; margin:0 auto;}

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 主题 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<!-- 开发模式 <constant name="struts.devMode" value="true" /> -->
+
+	<package name="hotai" extends="json-default" namespace="/">
+		<!--  拦截器-->
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="cn.it.backstag.interceptor.LoginInterceptor" />
+			<interceptor-stack name="hotaiStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义默认栈 -->
+		<default-interceptor-ref name="hotaiStack" /> 
+		<!-- 定义全局结果  -->
+		<global-results>
+			<result name="gotodlogin">/index.jsp</result>
+		</global-results>
+		<!-- 登入模块 -->
+		<action name="LoginAction_*" class="loginAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 用户模块 -->
+		<action name="UserAction_*" class="userAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 项目模块 -->
+		<action name="ProjectAction_*" class="projectAction" method="{1}">
+		    <result name="addsuccess" >
+				  /project/addproject2.jsp
+			</result>
+			<result name="adderror">/project/addproject2.jsp</result>
+			<result name="update">/project/updateproject2.jsp</result>
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="jsonproject" type="json">
+				<param name="root">model</param>
+			</result>
+		</action>
+
+		<!-- 自定义项目模块 -->
+		<action name="ProjectPantAction_*" class="projectPantAction"
+			method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="jsonproject" type="json">
+				<param name="root">model</param>
+			</result>
+		</action>
+
+
+		<!-- 短信模块 -->
+		<action name="MessageAction_*" class="messageAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+
+		<!-- 类型模块 -->
+		<action name="TypeAction_*" class="typeAction" method="{1}">
+			<result name="jsonMap" type="json">
+				<param name="root">pageMap</param>
+			</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="jsonType" type="json">
+				<param name="root">model</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 前台 -->
+	<package name="qiantai" namespace="/" extends="json-default">
+		<global-results>
+			<result name="guanbi">/qiangtai/index8.jsp</result>
+			<result name="shanchu">/qiangtai/index9.jsp</result>
+		</global-results>
+
+		<!-- 报名模块 -->
+		<action name="QianTaiUserAction_*" class="qianTaiUserAction"
+			method="{1}">
+			<result name="success">/qiangtai/index.jsp</result>
+			<result name="index2">/qiangtai/index2.jsp</result>
+			<result name="index3">/qiangtai/index3.jsp</result>
+			<result name="index4">/qiangtai/index4.jsp</result>
+			<result name="index7">/qiangtai/index7.jsp</result>
+			<result name="moban2">/qiangtai/temp/index.jsp</result>
+			<result name="jsonstatus" type="json">
+				<param name="root">status</param>
+			</result>
+			<result name="jsonuser" type="json">
+				<param name="root">model</param>
+			</result>
+		</action>
+
+		<!-- 自定义报名模块 -->
+		<action name="QianTaiUserPantAction_*" class="qianTaiUserPantAction"
+			method="{1}">
+			<result name="pant">/qiangtai/pant.jsp</result>
+			<result name="pant1">/qiangtai/pant1.jsp</result>
+			<result name="pant2">/qiangtai/pant2.jsp</result>
+			<result name="pant3">/qiangtai/pant3.jsp</result>
+			<result name="pant4">/qiangtai/pant4.jsp</result>
+			<result name="pant5">/qiangtai/pant5.jsp</result>
+			<result name="stream" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+	</package>
+</struts>
+	

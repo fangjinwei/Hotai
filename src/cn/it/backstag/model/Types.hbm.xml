@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.it.backstag.model">
+	<class name="Types" table="type">
+		<id name="type_id" type="int">
+			<column name="type_id" />
+			<generator class="identity" />
+		</id>
+		<property name="type_name" type="string">
+			<column name="type_name" />
+		</property>
+		<property name="type_create_date" type="string">
+			<column name="type_create_date" />
+		</property>
+		<property name="type_status" type="integer">
+			<column name="type_status" />
+		</property>
+		<property name="type_admin_id" type="integer">
+			<column name="type_admin_id" />
+		</property>
+		<property name="type_admin" type="string">
+			<column name="type_admin" />
+		</property>
+		<property name="type_num" type="integer">
+			<column name="type_num" />
+		</property>
+		<property name="type_developer" type="string">
+			<column name="type_developer" />
+		</property>
+	</class>
+</hibernate-mapping>

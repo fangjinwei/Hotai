@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,body,h1,h2,h3,h4,ul,li,ol,dl,dt,dd,form,p,input,textarea{margin:0;padding:0;}
+ul,dl,ol{list-style:none;}
+html, body {
+    height:100%;
+} 
+body{
+	font-family:"微软雅黑","华文细黑",Arial, Helvetica, sans-serif;
+	background-color:#f8f8f8;
+	color:#fff;
+	width:100%;
+	
+}
+img{border:none; width:100%;}
+h1,h2,h3{font-weight:normal;}
+.clear{clear:both}
+a{text-decoration:none;}
+
+.page-app {
+    max-width:640px;
+    min-width:320px;
+    margin:0 auto;
+	height:auto;
+    display:none\9;
+	font-size:0px;
+	width:100%;
+}
+
+.mian{width:100%; height:230px; background-color:#FFF; border:0px; margin:0; padding:0px; }
+.contain{ width:95%; height: auto; background-color:#FFF;}
+.list{ width:100%; height:45px; background-color:#FFF; float:left; margin-top:15px; border-bottom:#d3d3d3 1px solid; line-height:50px;}
+.icon1{ float:left; width:30px; height:30px;}
+.icon2{ float:left; width:100px; height:60px; margin-left:10px; line-height:45px;}
+.icon3{ float:left; width:100px; line-height:30px; padding-left:5px;}
+.icon4{ float:left; width:180px; line-height:10px; padding-left:5px;}
+.icon-down{ float:right; width:15px;  }
+.icon-down1{ float:left; width:15px; margin-left:70px;}
+
+.button{ width:100%; height:20%; line-height:50px; margin-bottom:20px;}
+.button1{ width:90%; height:50px; background-color:#ec3f40; 
+	/*-moz-border-radius: 35px;       Gecko browsers */
+    /* -webkit-border-radius: 35px;   Webkit browsers */
+    /*border-radius:35px;             W3C syntax */
+	border:0px;
+	-webkit-appearance:none;}
+.STYLE1{ font-family:"微软雅黑"; font-size:20px; color:#fff; line-height:30px; margin:0 auto; line-height:50px;}
+.notice{ width:95%; height:80px;}
+.danxuan{ width:30px; margin-right:5px; background-color:#000; }
+.STYLE2{ font-family:"微软雅黑"; font-size:15px; color:#a7a7a7; line-height:60px; margin:0 auto;}
+.STYLE3{ font-family:"微软雅黑"; font-size:15px; color:#fa213d; line-height:50px; margin:0 auto;}
+.STYLE4{ font-family:"微软雅黑"; font-size:16px; color:#787878; line-height:30px; margin:0 auto; float:left; text-align:left;}
+.STYLE5{ font-family:"微软雅黑"; font-size:16px; color:#a7a7a7; line-height:30px; margin:0 auto; float:left; text-align:left;}
+.STYLE6{ font-family:"微软雅黑"; font-size:13px; color:#787878; line-height:17px; margin:0 auto; float:left; text-align:left;}
+#ssss{ font-family:"微软雅黑"; font-size:20px; color:#FFF; line-height:50px; margin:0 auto;}
+
+#publishdate{ background-image:url(../images/xiala.jpg); background-repeat:no-repeat; width:35%; height:30px; border:none; text-align:left; padding-left:5px; line-height:30px; }
+#time{ width:65px; height:22px; border:0; border-radius:5px; }
+#branch{ width:65px; height:22px; border-radius:5px; }
+
+a:link{text-decoration:none ; color:#fa213d ;}
+a:visited {text-decoration:none ; color:#2870a3 ;}
+a:hover {text-decoration:none ; color:#fa213d ;}
+a:active {text-decoration:none ; color:#fa213d ;}
