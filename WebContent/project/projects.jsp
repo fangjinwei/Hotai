@@ -17,9 +17,8 @@ $(function() {
 		loadMsg : '数据加载验证中，请等待.....',
 
 		pagination : true,
-
 		striped : true,
-
+		
 		nowrap : false,
 		idField : 'id',
 		toolbar : [ {
@@ -177,7 +176,10 @@ $(function() {
 				});
 			
 			}
-		} ],
+		} , '-', {
+			text : "<a href='javascript:void(0)' id='sb' >分类查看</a>",
+
+		}],
 
 		fitColumns : true,
 		columns : [ [ {
@@ -264,6 +266,42 @@ $(function() {
 	    }
 
 	});  
+	//把一个普通的a标签转换为下拉菜单
+	$('#sb').splitbutton({    
+	    iconCls: 'icon-large-smartart',    
+	    menu: '#mm'   
+	});  
+	//分类查看
+	$('#jj').bind('click',function(){
+		   //查询
+		  $('#dg').datagrid('load',{
+			ispant:"标准"
+			});
+	});
+	$('#jj2').bind('click',function(){
+		   //查询
+		  $('#dg').datagrid('load',{
+			ispant:"1"
+			});
+		});
+	$('#jj3').bind('click',function(){
+		   //查询
+		  $('#dg').datagrid('load',{
+			ispant:"2"
+			});
+	});
+	$('#jj4').bind('click',function(){
+		   //查询
+		  $('#dg').datagrid('load',{
+			ispant:"3"
+			});
+	});
+    $('#jj5').bind('click',function(){
+    	   //查询
+		  $('#dg').datagrid('load',{
+			ispant:"4"
+			});
+	});
 
 });
 </script>
@@ -272,6 +310,13 @@ $(function() {
 	<div data-options="region:'center'" id="tt">
 		<table id="dg"></table>
 	</div>
-	
+	<!-- 下拉菜单显示的内容 -->	
+ <div id="mm" style="width:100px;">   
+   <div  id="jj">标准</div>     
+   <div id="jj2">标准二</div> 
+   <div id="jj3">标准三</div> 
+   <div id="jj4">标准三</div> 
+   <div id="jj5">自定义</div>       
+  </div>  
 </body>
 </html>

@@ -20,34 +20,34 @@ public class ProjectServiceImpl implements ProjectService {
 	private BaseDao<User> userDao;
 
 	@Override
-	public List<Project> findAllProject(int page, int size, String type) {
-		String hql = "from Project p  inner join fetch p.type where p.project_name like ? and p.type.type_status=1  order by p.id desc";
+	public List<Project> findAllProject(int page, int size, String type,String ispant) {
+		String hql = "from Project p  inner join fetch p.type where p.project_name like ? and p.type.type_status=1 and p.ispant like ? order by p.id desc";
 		List<Project> list = this.projectDao.findEntityByHQLS(hql, page, size,
-				"%" + type + "%");
+				"%" + type + "%","%" + ispant + "%");
 
 		return list;
 	}
 
 	@Override
-	public Long getProjectCount(String type) {
-		String hql = "select count(p) from Project p inner join  p.type where p.project_name like ? and p.type.type_status=1 ";
-		return this.projectDao.getCount(hql, "%" + type + "%");
+	public Long getProjectCount(String type,String ispant) {
+		String hql = "select count(p) from Project p inner join  p.type where p.project_name like ? and p.type.type_status=1 and p.ispant like ? ";
+		return this.projectDao.getCount(hql, "%" + type + "%","%" + ispant + "%");
 	}
 
 	@Override
 	public List<Project> findAllProjectDate(Integer page, Integer size,
-			String datetime) {
-		String hql = "from Project p inner join fetch p.type where p.project_createtime like ?  and p.type.type_status=1 order by p.id desc";
+			String datetime,String ispant) {
+		String hql = "from Project p inner join fetch p.type where p.project_createtime like ?  and p.type.type_status=1 and p.ispant like ? order by p.id desc";
 		List<Project> list = this.projectDao.findEntityByHQLS(hql, page, size,
-				"%" + datetime + "%");
+				"%" + datetime + "%","%" + ispant + "%");
 
 		return list;
 	}
 
 	@Override
-	public Object getProjectCountDate(String datetime) {
-		String hql = "select count(p) from Project p inner join  p.type where p.project_createtime like ? and p.type.type_status=1 ";
-		return this.projectDao.getCount(hql, "%" + datetime + "%");
+	public Object getProjectCountDate(String datetime,String ispant) {
+		String hql = "select count(p) from Project p inner join  p.type where p.project_createtime like ? and p.type.type_status=1  p.ispant like ?";
+		return this.projectDao.getCount(hql, "%" + datetime + "%","%" + ispant + "%");
 	}
 
 	@Override

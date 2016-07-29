@@ -21,8 +21,10 @@ $(function(){
 		  //
 		  if(cc=="标准"){
 			  content='<iframe src="${backstage}/project/addproject.jsp" frameborder="0" scrolling="no" width="100%" height="100%"/>';
-		  }else{
+		  }else if(cc=="标准2"){
 			  content='<iframe src="${backstage}/project/addproject2.jsp" frameborder="0" scrolling="no" width="100%" height="100%"/>';
+		  }else{
+			  content='<iframe src="${backstage}/project/addproject3.jsp" frameborder="0" scrolling="no" width="100%" height="100%"/>';
 		  }
 		  parent.parent.$('#win').window({
 				title:'添加项目',
@@ -49,7 +51,8 @@ $(function(){
     <label>类型</label>
    <select id="cc" >   
     <option value="标准">标准</option>   
-    <option value="标准2">标准2</option>   
+    <option value="标准2">标准2</option> 
+    <option value="标准2">标准3</option>     
    </select> 
    <br>
    <button id="bbb">确认</button> 

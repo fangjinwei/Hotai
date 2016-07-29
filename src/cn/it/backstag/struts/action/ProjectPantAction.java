@@ -47,10 +47,10 @@ public class ProjectPantAction extends BaseAction<Project> {
 		 * 时间查询+分页
 		 */
 		if (datetime != null && !"".equals(datetime)) {
-			List<Project> list = ProjectService.findAllProjectDate(page, size,
-					datetime);
+			List<Project> list = ProjectService.findAllProjectDate(page, rows,
+					datetime,ispant);
 			pageMap.put("rows", list);
-			pageMap.put("total", ProjectService.getProjectCountDate(datetime));
+			pageMap.put("total", ProjectService.getProjectCountDate(datetime,ispant));
 			return "jsonMap";
 		}
 
@@ -58,11 +58,16 @@ public class ProjectPantAction extends BaseAction<Project> {
 		 * 用户和电话查询+分页+默认初始化页面
 		 */
 
-		List<Project> list = ProjectService.findAllProject(page, size, "%"
-				+ nametype.trim() + "%");
+		List<Project> list = ProjectService.findAllProject(page, rows, "%"
+				+ nametype.trim() + "%",ispant);
 		pageMap.put("rows", list);
-		pageMap.put("total", ProjectService
-				.getProjectCount(nametype == null ? nametype = "" : nametype.trim()));
+		if(nametype==null){
+			nametype="";
+			}else{
+				nametype=nametype.trim();
+			}
+		pageMap.put("total", ProjectService.getProjectCount(nametype,ispant));
+
 
 		return "jsonMap";
 

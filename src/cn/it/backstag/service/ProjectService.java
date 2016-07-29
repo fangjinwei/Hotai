@@ -8,14 +8,14 @@ import cn.it.backstag.model.Project;
  * ProjectService
  */
 public interface ProjectService {
-	public List<Project> findAllProject(int page, int size, String type);
+	public List<Project> findAllProject(int page, int size, String type,String ispant);
 
-	public Long getProjectCount(String type);
+	public Long getProjectCount(String type,String ispant);
 
 	public List<Project> findAllProjectDate(Integer page, Integer size,
-			String datetime);
+			String datetime,String ispant);
 
-	public Object getProjectCountDate(String datetime);
+	public Object getProjectCountDate(String datetime,String ispant);
 
 	// 根据id删除一条或多条记录
 	public void deleteByids(String ids);

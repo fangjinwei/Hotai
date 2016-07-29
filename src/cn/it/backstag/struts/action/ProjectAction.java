@@ -19,6 +19,7 @@ import cn.it.backstag.model.Types;
 import cn.it.backstag.service.ProjectService;
 import cn.it.backstag.service.TypesService;
 import cn.it.backstag.util.Createdatetime;
+import cn.it.backstag.util.Pant;
 import cn.it.backstag.util.Pic;
 
 @Controller
@@ -45,15 +46,16 @@ public class ProjectAction extends BaseAction<Project> {
 	public String query() {
 
 		pageMap = new HashMap<>();
-
+		ispant=Pant.getfenlei(model.getIspant());
+		System.out.println(ispant);
 		/*
 		 * 时间查询+分页
 		 */
 		if (datetime != null && !"".equals(datetime)) {
-			List<Project> list = ProjectService.findAllProjectDate(page, size,
-					datetime);
+			List<Project> list = ProjectService.findAllProjectDate(page, rows,
+					datetime,ispant);
 			pageMap.put("rows", list);
-			pageMap.put("total", ProjectService.getProjectCountDate(datetime));
+			pageMap.put("total", ProjectService.getProjectCountDate(datetime,ispant));
 			return "jsonMap";
 		}
 
@@ -61,11 +63,15 @@ public class ProjectAction extends BaseAction<Project> {
 		 * 用户和电话查询+分页+默认初始化页面
 		 */
 
-		List<Project> list = ProjectService.findAllProject(page, size, "%"
-				+ nametype.trim() + "%");
+		List<Project> list = ProjectService.findAllProject(page, rows, "%"
+				+ nametype.trim() + "%",ispant);
 		pageMap.put("rows", list);
-		pageMap.put("total", ProjectService
-				.getProjectCount(nametype == null ? nametype = "" : nametype.trim()));
+		if(nametype==null){
+			nametype="";
+			}else{
+				nametype=nametype.trim();
+			}
+		pageMap.put("total", ProjectService.getProjectCount(nametype,ispant));
 
 		return "jsonMap";
 
@@ -234,7 +240,40 @@ public class ProjectAction extends BaseAction<Project> {
 
 		return "update";
 	}
+	//模版3的保存
+	public String add3(){
+		try {
+			model.setProject_createtime(Createdatetime.getdatetime());
+			model.setIspant("标准3");
+			 ProjectService.sava(model);
+			 model.setProject_web("/QianTaiUserAction_indexmobanaaaa?id="
+						+ model.getId());
+			 ProjectService.update(model);
+			
+		} catch (Exception e) {
+			status=2;
+			 return "update";
+		}
+		 status=1;
+	 return "update";
+	}
+	public String toupdate3(){
+		model = ProjectService.findById(model.getId());
+		if(model!=null){
+			mySession.put("updatemodel3", model);
+		}
+		return "update2";
+	}
 	
+	//模版3的修改
+	 public String update3(){		
+			model.setIspant("标准3");
+			 ProjectService.update(model);
+			  status=1;
+			   return "update";
+	}
+			
+			
 	// 图片
 		public String upload() {
 			ServletContext servletContext = ServletActionContext

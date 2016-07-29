@@ -20,10 +20,11 @@ public abstract class BaseAction<T> extends ActionSupport implements
 	protected Map<String, Object> pageMap;// 用来装分页信息
 	protected Integer page = 1;
 	protected Integer size = 10;
+	protected Integer rows;
 	protected InputStream inputStream;
 	protected String nametype = "";
 	protected String datetime = null;
-
+	protected String ispant = "";
 	protected String ids;// 获取要删除的id
 	protected int status;// 操作状态
 
@@ -108,6 +109,22 @@ public abstract class BaseAction<T> extends ActionSupport implements
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public Integer getRows() {
+		return rows;
+	}
+
+	public void setRows(Integer rows) {
+		this.rows = rows;
+	}
+
+	public String getIspant() {
+		return ispant;
+	}
+
+	public void setIspant(String ispant) {
+		this.ispant = ispant;
 	}
 
 }

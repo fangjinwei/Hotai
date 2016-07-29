@@ -20,7 +20,7 @@ public class ProjectPantServiceImpl implements ProjectService {
 	private BaseDao<User> userDao;
 
 	@Override
-	public List<Project> findAllProject(int page, int size, String type) {
+	public List<Project> findAllProject(int page, int size, String type,String ispant) {
 		String hql = "from Project p  inner join fetch p.type where p.project_name like ? and p.type.type_status=1 and p.ispant=? order by p.id desc";
 		List<Project> list = this.projectDao.findEntityByHQLS(hql, page, size,
 				"%" + type + "%","自定义");
@@ -29,14 +29,14 @@ public class ProjectPantServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Long getProjectCount(String type) {
+	public Long getProjectCount(String type,String ispant) {
 		String hql = "select count(p) from Project p inner join  p.type where p.project_name like ? and p.type.type_status=1 and p.ispant=?";
 		return this.projectDao.getCount(hql, "%" + type + "%","自定义");
 	}
 
 	@Override
 	public List<Project> findAllProjectDate(Integer page, Integer size,
-			String datetime) {
+			String datetime,String ispant) {
 		String hql = "from Project p inner join fetch p.type where p.project_createtime like ?  and p.type.type_status=1 and p.ispant=? order by p.id desc";
 		List<Project> list = this.projectDao.findEntityByHQLS(hql, page, size,
 				"%" + datetime + "%","自定义");
@@ -45,7 +45,7 @@ public class ProjectPantServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Object getProjectCountDate(String datetime) {
+	public Object getProjectCountDate(String datetime,String ispant) {
 		String hql = "select count(p) from Project p inner join  p.type where p.project_createtime like ? and p.type.type_status=1 and p.ispant=?";
 		return this.projectDao.getCount(hql, "%" + datetime + "%","自定义");
 	}

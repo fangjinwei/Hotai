@@ -39,7 +39,18 @@ $(function(){
 			    modal:true   
 			});
     	
-     }
+     }else if(ispant=="标准3"){
+   	  parent.parent.$('#win').window({
+			title:'修改项目',
+			width: 890,
+			height: 600,
+			left:250,
+			top:53,
+			content :'<iframe title="编辑项目" src="${backstage}/ProjectAction_toupdate3?id='+projectid+'" frameborder="0" scrolling="no" width="100%" height="100%" />',
+		    modal:true   
+		});
+	
+}
    
 	//通过ajax来加载数据
 	 $.get("ProjectAction_toudpate",
