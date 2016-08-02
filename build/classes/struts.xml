@@ -119,6 +119,7 @@
 			<result name="index4">/qiangtai/index4.jsp</result>
 			<result name="index7">/qiangtai/index7.jsp</result>
 			<result name="moban2">/qiangtai/temp/index.jsp</result>
+			<result name="moban3">/qiangtai/fangbmtd/index.jsp</result>
 			<result name="jsonstatus" type="json">
 				<param name="root">status</param>
 			</result>

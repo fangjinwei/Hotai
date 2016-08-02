@@ -277,7 +277,57 @@ public class QianTaiUserAction extends BaseAction<User> {
 			return "jsonstatus";
 		}
 	}
-
+ 
+	
+	
+	
+	
+	////////模版3进入
+  public String	indexmobanaaaa(){
+	  long id = model.getId();
+		Integer idd = (int) id;
+		p=(Project) mySession.get("project");
+		if(p==null){//判断是否是第一次登入
+			p = projectService.findById(idd);
+			if (p == null) {status=3; return "moban2";}//判断是否已经删除
+			mySession.put("project", p);
+		}
+		if(p.getId()!=id){//判断是否是不同的项目
+			p = projectService.findById(idd);
+			if (p == null){status=4; return "moban2";}//判断是否已经删除
+			mySession.put("project", p);
+		}
+		if (p.getProject_state() == 0){status=5; return "moban2";}// 判断活动是否关闭
+		
+		return "moban3";
+  }
+  
+  public String addaaaa(){
+	  try {
+			 if(model.getUsername()!=null&&!model.getUsername().equals("")&&model.getTel()!=null&&!model.getTel().equals("")){
+				
+						p = (Project) mySession.get("project");
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+						String format = sdf.format(new Date().getTime());
+						model.setRegistration_time(format);
+						model.setRegistration_go(p.getProject_name());
+					
+						model.setProject(p);
+					
+					HttpSend.sendmoban(p.getProject_kf_audit_tel(), model.getUsername(), model.getTel(), p.getProject_name());
+					userService.save(model);
+					HttpSend.sendmoban(p.getProject_jd_audit_tel(), model.getUsername(),model.getTel(), p.getProject_name());
+					   
+					userService.pdateMessageByids(1,Long.toString( model.getId()));
+					status=2;
+			 }
+			} catch (Exception e) {
+				status=5;
+			    return "moban3";
+			}
+	  return "moban3";
+  }
+  
 	/********************************************************************************/
 	public Project getP() {
 		return p;
