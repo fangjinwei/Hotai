@@ -9,7 +9,7 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="format-detection" content="email=no" />
 <meta name="format-detection" content="address=no" />
-<link href="${backstage}/fangbmtd/css/Style.css" rel="stylesheet" type="text/css" />
+<link href="${backstage}/qiangtai/fangbmtd/css/Style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
      $(function(){
     	 if('${status}'=='2'){
@@ -33,7 +33,7 @@
     	
           //提交按钮,所有验证通过方可提交
 
-          $('.anniu').click(function(){
+          $('.button1').click(function(){
         	  var ok1=false;
               var ok2=false;
         
@@ -68,19 +68,19 @@
 <title>房天下报名通道</title>
 </head>
 	<body>
-		<form action="QianTaiUserAction_addaaaa" method="post" id="myform" name="myform">
+		<form action="${backstage}/QianTaiUserAction_addaaaa" method="post" id="myform" name="myform">
               
 			<div align="center" class="page-app">
 
 				<div class="toutu">
-					<img src="images/tou.jpg">
+					<img src="${backstage}/qiangtai/fangbmtd/images/tou.jpg">
 				</div>
 				<div class="mian">
 					<div class="contain">
 
 						<div class="list">
 							<div class="icon1">
-								<img src="images/name-icon.jpg" width="100%" height="100%" />
+								<img src="${backstage}/qiangtai/fangbmtd/images/name-icon.jpg" width="100%" height="100%" />
 							</div>
 							<div class="icon2">
 								<input id="username" type="text" name="username" value="请输入姓名"
@@ -90,7 +90,7 @@
 						</div>
 						<div class="list">
 							<div class="icon1">
-								<img src="images/number-icon.jpg" width="100%" height="100%" />
+								<img src="${backstage}/qiangtai/fangbmtd/images/number-icon.jpg" width="100%" height="100%" />
 							</div>
 							<div class="icon2">
 								<input id="tel" type="text" name="tel" value="请输入电话"
