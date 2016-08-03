@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Resource(name = "userDao")
 	private BaseDao<User> userDao;
 
-	public List<User> findAllJoinProject(int page, int size, String type) {
+	public List<User> findAllJoinProject(int page, int size, String type,String type2) {
 		String hql = "from User u inner join fetch u.project p inner join fetch p.type where u.username like ? and u.project.project_state=1 or u.tel like ? order by u.id desc";
 		List<User> list = this.userDao.findEntityByHQLS(hql, page, size, "%"
 				+ type + "%", "%" + type + "%");
@@ -31,14 +31,14 @@ public class UserServiceImpl implements UserService {
 		return list;
 	}
 
-	public Long getUserCount(String type) {
+	public Long getUserCount(String type,String type2) {
 		String hql = "select count(u) from User u inner join  u.project p inner join  p.type where u.username like ? and u.project.project_state=1 or u.tel like ?";
 		return this.userDao.getCount(hql, "%" + type + "%", "%" + type + "%");
 		
 	}
 
 	public List<User> findAllJoinProjectDate(Integer page, Integer size,
-			String datetime) {
+			String datetime,String type2) {
 		String hql = "from User u inner join fetch u.project p inner join fetch p.type where u.registration_time like ? and u.project.project_state=1 order by u.id desc";
 		List<User> list = this.userDao.findEntityByHQLS(hql, page, size, "%"
 				+ datetime + "%");
@@ -50,8 +50,8 @@ public class UserServiceImpl implements UserService {
 		return list;
 	}
 
-	public long getUserCountDate(String datetime) {
-		String hql = "select count(u) from User u inner join  u.project p inner join  p.type where u.registration_time like ? and u.project.project_state=1";
+	public long getUserCountDate(String datetime,String type2) {
+		String hql = "select count(u) from User u inner join  u.project p inner join  p.type where u.registration_time like ?  and u.project.project_state=1";
 		return this.userDao.getCount(hql, "%" + datetime + "%");
 		
 	}
@@ -161,6 +161,49 @@ public class UserServiceImpl implements UserService {
         String hql="select count(*) from User where tel=?";
           Long count = userDao.getCount(hql, tel);
           return count;
+	}
+
+	@Override
+	public List<User> findAllJoinProject2(int page, int size, String type,
+			String type2, String type3) {
+		String hql = "from User u inner join fetch u.project p inner join fetch p.type where ( u.username like ?  and u.project.project_state=1 or u.tel like ?) and  u.project.project_name=? order by u.id desc";
+		List<User> list = this.userDao.findEntityByHQLS(hql, page, size, "%"
+				+ type + "%", "%" + type + "%",type3);
+		
+       if(!list.isEmpty()){
+    	   for (User user : list) {
+			user.setSum(enrollsum(user.getTel()));
+		}
+       }
+		
+		return list;
+	}
+
+	@Override
+	public Long getUserCount2(String type, String type2, String type3) {
+		String hql = "select count(u) from User u inner join  u.project p inner join  p.type where  ( u.username like ? and u.project.project_state=1  or u.tel like ?) and u.project.project_name=?";
+		return this.userDao.getCount(hql, "%" + type + "%", "%" + type + "%",type3);
+		
+	}
+
+	@Override
+	public List<User> findAllJoinProjectDate2(Integer page, Integer size,
+			String datetime, String type, String type3) {
+			String hql = "from User u inner join fetch u.project p inner join fetch p.type where u.registration_time like ? and u.project.project_state=1 and u.project.project_name=? order by u.id desc";
+			List<User> list = this.userDao.findEntityByHQLS(hql, page, size, "%"
+					+ datetime + "%",type3);
+			  if(!list.isEmpty()){
+		    	   for (User user : list) {
+					user.setSum(enrollsum(user.getTel()));
+				}
+		       }
+			return list;
+	}
+
+	@Override
+	public long getUserCountDate2(String datetime, String type, String type3) {
+		String hql = "select count(u) from User u inner join  u.project p inner join  p.type where u.registration_time like ? and u.project.project_name=?  and u.project.project_state=1 ";
+		return this.userDao.getCount(hql, "%" + datetime + "%");
 	}
 
 	

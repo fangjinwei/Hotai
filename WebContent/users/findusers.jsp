@@ -7,14 +7,18 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function() {
-	
+		//得到项目编号，通过这个来得到数据
+		var project_name=(parent.$("iframe[title='看看啊']").get(0).src).split("=")[1];
+		project_name=decodeURI(project_name);
+		
 		$('#dg').datagrid({
-			url : '${backstage}/UserAction_queryJoinAccount',
+			url : '${backstage}/UserAction_queryJoinAccount2',
 
 			queryParams : {
-				nametype:'',
+				type:'',
 				datetime:'',
-				time :''
+				time :'',
+				project_name :project_name
 			},
 
 			loadMsg : '数据加载验证中，请等待.....',
@@ -181,7 +185,7 @@
 			searcher : function(value, name) {
 				//查询
 				$('#dg').datagrid('load',{
-					nametype:value
+					type:value
 				});
 
 			},

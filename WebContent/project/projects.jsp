@@ -10,7 +10,21 @@
 $(function() {
       var projectid=null;
 	$('#dg').datagrid({
+		
 		url : '${backstage}/ProjectAction_query',
+		
+		onDblClickCell: function(index,field,value){
+			if(field=="project_name"){
+				
+				//alert(value);parent.$("iframe[title='项目管理']").get(0).src
+		   var href	="${backstage}/users/findusers.jsp?project_name="+value;
+		   parent.parent.$('#tt').tabs('add',{
+				title: "看看啊",
+				closable:true, 
+				content:'<iframe title="看看啊" src='+href+' frameborder="0" scrolling="yes" width="100%" height="100%" />'
+			});
+			}
+		},
 
 		//queryParams : {},
 
@@ -188,7 +202,10 @@ $(function() {
 		}, {
 			field : 'project_name',
 			 width : 70,
-			title : '项目名'
+			title : '项目名',
+			 formatter: function(value,row,index){
+			return '<a href="javascript:void(0)" id="findByUsers">'+value+'</a>';
+				}
 		}, {
 			field : 'project_createtime',
 			title : '创建时间',
@@ -302,8 +319,14 @@ $(function() {
 			ispant:"4"
 			});
 	});
+    
+      
+  
+      
 
 });
+
+
 </script>
 </head>
 <body>

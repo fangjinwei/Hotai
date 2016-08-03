@@ -9,14 +9,25 @@ import cn.it.backstag.model.User;
  * UserService
  */
 public interface UserService {
-	public List<User> findAllJoinProject(int page, int size, String type);
+	public List<User> findAllJoinProject(int page, int size, String type, String type2);
 
-	public Long getUserCount(String type);
+	public Long getUserCount(String type, String type2);
 
 	public List<User> findAllJoinProjectDate(Integer page, Integer size,
-			String datetime);
+			String datetime, String type);
 
-	public long getUserCountDate(String datetime);
+	public long getUserCountDate(String datetime, String type);
+	
+	
+	
+	public List<User> findAllJoinProject2(int page, int size, String type, String type2,String type3);
+
+	public Long getUserCount2(String type, String type2,String type3);
+
+	public List<User> findAllJoinProjectDate2(Integer page, Integer size,
+			String datetime, String type,String type3);
+
+	public long getUserCountDate2(String datetime, String type,String type3);
 	
 	//根据id删除一条或多条记录
 	public void deleteByids(String ids);
@@ -42,6 +53,8 @@ public interface UserService {
 
 	//查询报名次数
 	public long enrollsum(String tel);
+	
+	
 	
 	
 }
